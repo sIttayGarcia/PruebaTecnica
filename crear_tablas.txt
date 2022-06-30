@@ -1,0 +1,64 @@
+DROP TABLE IF EXISTS assign;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS answer;
+DROP TABLE IF EXISTS question;
+DROP TABLE IF EXISTS exam;
+DROP TABLE IF EXISTS timezone;
+
+CREATE TABLE timezone (
+  id_time_zone INT AUTO_INCREMENT  PRIMARY KEY,
+  desc_time_zone VARCHAR(250) NOT NULL
+);
+CREATE TABLE exam (
+  id_exam INT AUTO_INCREMENT  PRIMARY KEY,
+  id_time_zone INT NOT NULL
+);
+CREATE TABLE students (
+  id_students INT AUTO_INCREMENT  PRIMARY KEY,
+  name VARCHAR(250) NOT NULL,
+  age INT NOT NULL,
+  city VARCHAR(250) NOT NULL,
+  id_time_zone INT NOT NULL
+);
+
+CREATE TABLE question (
+  id_question INT AUTO_INCREMENT  PRIMARY KEY,
+  id_exam INT NOT NULL,
+  val_question VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE answer (
+  id_answer INT AUTO_INCREMENT  PRIMARY KEY,
+  id_question INT NOT NULL,
+  val_answer VARCHAR(250) NOT NULL,
+  response INT NOT NULL
+);
+
+CREATE TABLE assign (
+  id_assign INT AUTO_INCREMENT  PRIMARY KEY,
+  id_students INT NOT NULL,
+  date_aplication TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  active INT NOT NULL,
+  SCORE INT NOT NULL
+);
+
+
+ALTER TABLE STUDENTS
+ADD FOREIGN KEY (ID_TIME_ZONE)
+REFERENCES TIMEZONE (ID_TIME_ZONE);
+
+ALTER TABLE exam
+ADD FOREIGN KEY (ID_TIME_ZONE)
+REFERENCES TIMEZONE (ID_TIME_ZONE);
+
+ALTER TABLE question
+ADD FOREIGN KEY (id_exam)
+REFERENCES exam (id_exam);
+
+ALTER TABLE answer
+ADD FOREIGN KEY (id_question)
+REFERENCES question (id_question);
+
+ALTER TABLE assign
+ADD FOREIGN KEY (id_students)
+REFERENCES students (id_students);

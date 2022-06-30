@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "111951bf-0e38-4502-9204-253d4a5c337a",
+		"name": "Examen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10680790"
+	},
+	"item": [
+		{
+			"name": "GET - Valida si el estudiante precento el examen",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/student/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"student",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - obtine examen por estudiante",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/exam/student/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"exam",
+						"student",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Guarda Respuestas del examen",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"answers\": [\r\n        {\r\n            \"idQuestion\": 3,\r\n            \"answer\": {\r\n                \"numAnswer\": \"2\",\r\n                \"descAnswer\": \"Opcion 2\",\r\n                \"idAnswer\": 10\r\n            },\r\n            \"valor\": 50.0\r\n        },\r\n        {\r\n            \"idQuestion\": 4,\r\n            \"answer\": {\r\n                \"numAnswer\": \"4\",\r\n                \"descAnswer\": \"Opcion 4\",\r\n                \"idAnswer\": 16\r\n            },\r\n            \"valor\": 50.0\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/exam/student/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"exam",
+						"student",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
